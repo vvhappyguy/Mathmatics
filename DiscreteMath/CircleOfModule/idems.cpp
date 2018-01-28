@@ -3,6 +3,8 @@
 using namespace std;
 
 int main(){
+    cout << " << Program for finding idempotents >>" << endl;
+    cout << "Write module of Circle: ";
     int count = 0;
     int z = 47;
     cin >> z;
@@ -12,5 +14,5 @@ int main(){
             count++;
         }
     }
-    cout << endl << count << endl;
+    cout << endl<< "Count of idempotents: " << count << endl;
 }

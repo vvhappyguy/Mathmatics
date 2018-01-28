@@ -3,6 +3,8 @@
 using namespace std;
 
 int main(){
+    cout << " << Program for finding nillpotents >>" << endl;
+    cout << "Write module of Circle: ";
     int counter = 0;
     int z = 44;
     cin >> z;
@@ -14,5 +16,5 @@ int main(){
             } 
         }
     }
-    cout << endl << counter << endl;
+    cout << "Count of zeros in Circle: "<< endl << counter << endl;
 }

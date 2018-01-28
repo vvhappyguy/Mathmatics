@@ -4,6 +4,7 @@
 using namespace std;
 
 int main(){
+    cout << " << Program for finding nillpotents >>" << endl;
     cout << "Write module of Circle: ";
     int counter = 0;
     int z;

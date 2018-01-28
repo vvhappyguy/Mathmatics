@@ -3,6 +3,8 @@
 using namespace std;
 
 int main(){
+    cout << " << Program for finding reversible (obratimie) elements >>" << endl;
+    cout << "Write module of Circle: ";
     int count = 0;
     int z = 47;
     cin >> z;
@@ -14,5 +16,8 @@ int main(){
            }
         }
     }
-    cout << endl << count << endl;
+    cout << endl << "Count of reversible elements: " << count << endl;
+    if(count + 1 == z){
+        cout << "Module of Circle is simple number." << endl;
+    }
 }
