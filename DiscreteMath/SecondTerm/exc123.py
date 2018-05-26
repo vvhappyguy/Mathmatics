@@ -24,7 +24,7 @@ g = []
 for i in range(3):
     f1.append(bin(int(dictA[first_name[i]])))
     f2.append(bin(int(dictA[last_name[i]])))
-    g.append(bin(f1[i]) | bin(f2[i]))
+    g.append(bin(dict[first_name[i]]) | bin(dict[last_name[i]]))
 
 print(f1)
 print(f2)
