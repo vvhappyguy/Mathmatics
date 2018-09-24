@@ -1,15 +1,21 @@
 #include <stdio.h>
 #include <malloc.h>
 
+/*
+ Global variables
+ num for counting matrixes
+ array for storage all inited matrixes
+*/
 short num = 0;
 struct matrix *array;
 
+// Update memory for add new matrix
 void updMemory()
 {
     array = realloc(array, 24 * (num + 1));
 }
 
-/*Объявление структуры матрицы*/
+/*  Structure of matrix */
 struct matrix
 {
     short number;
@@ -18,7 +24,7 @@ struct matrix
     float **a;
 };
 
-/*Функция для создания новой структуры*/
+/* Factrory-method for struct matrix */
 struct matrix init()
 {
     struct matrix matr;
@@ -62,6 +68,7 @@ struct matrix init()
 
 void print_matrix();
 
+// Sum of two matrixes
 struct matrix add(struct matrix matr1, struct matrix matr2, short k)
 {
     if (matr1.rows != matr2.rows || matr1.columns != matr2.columns || (k != 0 && k != 1))
@@ -120,6 +127,7 @@ struct matrix add(struct matrix matr1, struct matrix matr2, short k)
     }
 }
 
+// Power of two matrixes
 struct matrix power(struct matrix matr1, struct matrix matr2)
 {
     if (matr1.columns != matr2.rows)
@@ -167,6 +175,7 @@ struct matrix power(struct matrix matr1, struct matrix matr2)
     }
 }
 
+// Take matrix to n (pow(n)). it's like matrix^n
 struct matrix matrixPowN(struct matrix matr)
 {
     int o;
@@ -230,6 +239,7 @@ struct matrix matrixPowN(struct matrix matr)
     }
 }
 
+// Transporation of matrix 
 struct matrix transp(struct matrix matr)
 {
     int i, j;
@@ -250,6 +260,7 @@ struct matrix transp(struct matrix matr)
     return tran;
 }
 
+// Main func)
 int main(int argc, char *argv[])
 {
     char q;
@@ -380,6 +391,7 @@ int main(int argc, char *argv[])
     return 0;
 }
 
+// Print matrix-method
 void print_matrix(struct matrix matr)
 {
     int i, j;
