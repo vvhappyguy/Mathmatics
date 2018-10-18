@@ -34,14 +34,14 @@ struct matrix init()
     matr.columns = 0;
     matr.rows = 0;
     num++;
-    printf("Введите количество строк и столбцов матрицы #%d \n", matr.number);
+    printf("Please, enter count of columns and rows #%d \n", matr.number);
     printf("->\n");
     scanf("%d", &matr.rows);
     scanf("%d", &matr.columns);
     if (matr.rows < 1 || matr.columns < 1)
     {
-        printf("!!! Некорректный ввод\n");
-        printf("!!! Начните заново\n");
+        printf("!!! Incorrect input\n");
+        printf("!!! Start Again\n");
         printf("\n-------------------------------------------------\n");
         struct matrix zero;
         zero.columns = 0;
@@ -50,7 +50,7 @@ struct matrix init()
         return zero;
     }
     printf("->");
-    printf("Введите значения (float) элементов матрицы №%d  \n", matr.number);
+    printf("Enter value of matrix's element (float) №%d  \n", matr.number);
 
     matr.a = (float **)malloc(matr.rows * sizeof(float *));
     for (i = 0; i < matr.rows; i++)
@@ -58,7 +58,7 @@ struct matrix init()
         matr.a[i] = (float *)malloc(matr.columns * sizeof(float));
         for (j = 0; j < matr.columns; j++)
         {
-            printf("a[%d][%d] = ", i, j);
+            printf("m[%d][%d] = ", i, j);
             scanf("%f", &matr.a[i][j]);
         }
     }
@@ -73,8 +73,8 @@ struct matrix add(struct matrix matr1, struct matrix matr2, short k)
 {
     if (matr1.rows != matr2.rows || matr1.columns != matr2.columns || (k != 0 && k != 1))
     {
-        printf("\n!!! Матрицы невозможно сложить\n");
-        printf("!!! Имеют разный размер\n");
+        printf("\n!!! Can't sum matrixes\n");
+        printf("!!! Different size\n");
         struct matrix zero;
         zero.columns = 0;
         zero.rows = 0;
@@ -100,7 +100,7 @@ struct matrix add(struct matrix matr1, struct matrix matr2, short k)
         }
         if (k == 0)
         {
-            printf("Сложение матрицы №%d и матрицы №%d", matr1.number, matr2.number);
+            printf("Sum of №%d + №%d matrixes", matr1.number, matr2.number);
             for (i = 0; i < add.rows; i++)
             {
                 for (j = 0; j < add.columns; j++)
@@ -112,7 +112,7 @@ struct matrix add(struct matrix matr1, struct matrix matr2, short k)
         }
         else if (k == 1)
         {
-            printf("Вычитание матрицы №%d из матрицы №%d", matr2.number, matr1.number);
+            printf("Deduct of №%d - №%d", matr2.number, matr1.number);
             for (i = 0; i < add.rows; i++)
             {
                 for (j = 0; j < add.columns; j++)
@@ -132,8 +132,8 @@ struct matrix power(struct matrix matr1, struct matrix matr2)
 {
     if (matr1.columns != matr2.rows)
     {
-        printf("\n!!! Матрицы невозможно перемножить\n");
-        printf("!!! Размеры не совместимы\n");
+        printf("\n!!! Can't product matrixes\n");
+        printf("!!! Bad sizes\n");
         struct matrix zero;
         zero.columns = 0;
         zero.rows = 0;
@@ -179,12 +179,12 @@ struct matrix power(struct matrix matr1, struct matrix matr2)
 struct matrix matrixPowN(struct matrix matr)
 {
     int o;
-    printf("В какую степень вы хотите возвести свою матрицу %d\n", matr.number);
+    printf("Degree of pow matrix^n. Enter n. %d\n", matr.number);
     scanf("%d", &o);
     if (matr.rows != matr.columns || o < 0)
     {
-        printf("\n!!! Матрицу невозможно возвести в n-степень\n");
-        printf("!!! Матрица должна быть квадратной\n");
+        printf("\n!!! Can't pow matrix\n");
+        printf("!!! Matrix must be square\n");
         struct matrix zero;
         zero.columns = 0;
         zero.rows = 0;
@@ -270,11 +270,11 @@ int main(int argc, char *argv[])
     {
         int count, state = 0;
         int i, a1, a2;
-        printf("Добро пожаловать в калькулятор матриц!!!\n");
+        printf("Welcome to matrix Calculator by Dyakin Ivan!!!\n");
         printf("----------------------------------------\n");
         if (num == 0)
         {
-            printf("Сколько матриц вы хотите инициализировать:\n");
+            printf("Enter count of matrixes which you want to init:\n");
             scanf(" %d", &count);
 
             for (i = 0; i < count; i++)
@@ -296,7 +296,7 @@ int main(int argc, char *argv[])
             }
         }
 
-        printf("Вам доступны несколько операций над матрицами:\n0.Init Matrix\n1. Сложение\n2. Вычитание\n3. Умножение\n4. Транспонирование\n5. Возведение в степень\nВыберите одну из них.\n->\n");
+        printf("You can:\n0.Init Matrix\n1. Sum two\n2. Deduct two\n3. Product two\n4. Transporation\n5. Pow matrix to n degree\nChoose one of numbers.\n->\n");
         scanf(" %d", &state);
         switch (state)
         {
@@ -308,7 +308,7 @@ int main(int argc, char *argv[])
         }
         case 1:
         {
-            printf("Выберите матрицы для операции: ");
+            printf("Choose matrixes: ");
             scanf(" %ud", &a1);
             scanf(" %ud", &a2);
             printf("\n");
@@ -323,7 +323,7 @@ int main(int argc, char *argv[])
         }
         case 2:
         {
-            printf("Выберите матрицы для операции: ");
+            printf("Choose matrixes: ");
             scanf(" %ud", &a1);
             scanf(" %ud", &a2);
             printf("\n");
@@ -337,7 +337,7 @@ int main(int argc, char *argv[])
         }
         case 3:
         {
-            printf("Выберите матрицы для операции: ");
+            printf("Choose matrixes: ");
             scanf(" %ud", &a1);
             scanf(" %ud", &a2);
             printf("\n");
@@ -351,7 +351,7 @@ int main(int argc, char *argv[])
         }
         case 4:
         {
-            printf("Выберите матрицу для операции: ");
+            printf("Choose matrixes: ");
             scanf(" %ud", &a1);
             printf("\n");
             updMemory();
@@ -363,7 +363,7 @@ int main(int argc, char *argv[])
         }
         case 5:
         {
-            printf("Выберите матрицу для операции: ");
+            printf("Choose matrixes: ");
             scanf(" %ud", &a1);
             printf("\n");
             updMemory();
@@ -374,7 +374,7 @@ int main(int argc, char *argv[])
             break;
         }
         default:
-            printf("Некорректный ввод, завершение программы");
+            printf("Incorrent enter. Try Again.");
         }
 
         printf("Press \'c\' to start or q for exit!\n");
@@ -396,7 +396,7 @@ void print_matrix(struct matrix matr)
 {
     int i, j;
     float **a = matr.a;
-    printf("@\nПечать матрицы №%d\n", matr.number);
+    printf("@\nPrint Matrix №%d\n", matr.number);
     for (i = 0; i < matr.rows; i++)
     {
         for (j = 0; j < matr.columns; j++)
