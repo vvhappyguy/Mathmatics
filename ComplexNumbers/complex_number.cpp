@@ -1,5 +1,6 @@
 #include "complex_number.h"
 #include <iostream>
+#include <string>
 #include <math.h>
 
 ComplexNumber::ComplexNumber()
@@ -53,4 +54,35 @@ float ComplexNumber::tgArg()
 float ComplexNumber::Arg()
 {
     return tan(this->tgArg());
-}
+};
+
+// ComplexNumber ComplexNumber::operator+(ComplexNumber* &a)
+// {
+//     return ComplexNumber(a->getRealUnit()+this->getRealUnit(),a->getImagineUnit()+this->getImagineUnit());
+// };
+
+// ComplexNumber ComplexNumber::operator-(ComplexNumber &a)
+// {
+//     return ComplexNumber(this->getRealUnit()-a.getRealUnit(),this->getImagineUnit()-a.getImagineUnit());
+// };
+
+// ComplexNumber ComplexNumber::operator=(ComplexNumber* &a)
+// {
+//     *this->real = a->getRealUnit();
+//     *this->imagine = a->getImagineUnit();
+//     return *this;
+// };
+
+// bool ComplexNumber::operator==(ComplexNumber* &a)
+// {
+//     return (*this->real == a->getRealUnit() && *this->imagine==a->getImagineUnit()) ? true:false;
+// };  
+
+std::string ComplexNumber::toString()
+{
+    char* tmp = new char[100];
+    sprintf(tmp,"%f + %fi",*this->real, *this->imagine);
+    std::string res(tmp);
+    delete tmp;
+    return res;
+};
