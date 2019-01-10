@@ -30,6 +30,32 @@ class Node
     };
 };
 
+Node *DFS(Node *start_node, ushort _value)
+{
+    // std::cout << "Start DFS" << std::endl;
+    stack<Node *> next_nodes;
+    set<Node *> seen_nodes;
+
+    next_nodes.push(start_node);
+    seen_nodes.insert(start_node);
+
+    while (!next_nodes.empty())
+    {
+        Node *node = next_nodes.top();
+        next_nodes.pop();
+        // std::cout << hex << node << std::endl;
+        // std::cout << node->value << " " << _value<<std::endl;
+        if (node->value == _value)
+            return node;
+        for (Node *_node : node->connected_nodes)
+            if (seen_nodes.count(_node) == 0)
+            {
+                next_nodes.push(_node);
+                seen_nodes.insert(_node);
+            }
+    }
+};
+
 class MatrixAdj
 {
   public:
@@ -83,7 +109,7 @@ int main(int args, char *argv[])
 
     for (Node *node : all_nodes)
     {
-        cout << "It's " << node->number << " with value = " << node->value << endl;
+        cout << "It's (" << hex << node << dec << ") " << node->number << " with value = " << node->value << endl;
         if (node->connected_nodes.size() > 0)
         {
             cout << "There are connected nodes: " << endl;
@@ -98,9 +124,12 @@ int main(int args, char *argv[])
         cout << endl;
     }
 
-    MatrixAdj* matrix = new MatrixAdj(all_nodes);
+    MatrixAdj *matrix = new MatrixAdj(all_nodes);
     matrix->print();
     delete matrix;
+
+    Node *find_node = DFS(&a, 1);
+    std::cout << "Find Node: " << hex << find_node << dec << "\t NUMBER:" << find_node->number << std::endl;
 
     return 0;
 }
