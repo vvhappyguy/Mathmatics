@@ -54,6 +54,31 @@ Node *DFS(Node *start_node, ushort _value)
                 seen_nodes.insert(_node);
             }
     }
+    return NULL;
+};
+
+Node *BFS(Node *start_node, ushort _value)
+{
+    queue<Node *> next_nodes;
+    set<Node *> seen_nodes;
+
+    next_nodes.push(start_node);
+    seen_nodes.insert(start_node);
+
+    while (!next_nodes.empty())
+    {
+        Node *node = next_nodes.front();
+        next_nodes.pop();
+        if (node->value == _value)
+            return node;
+        for (Node *_node : node->connected_nodes)
+            if (seen_nodes.count(_node) == 0)
+            {
+                next_nodes.push(_node);
+                seen_nodes.insert(node);
+            }
+    }
+    return NULL;
 };
 
 class MatrixAdj
