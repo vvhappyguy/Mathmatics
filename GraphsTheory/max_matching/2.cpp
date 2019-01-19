@@ -1,10 +1,9 @@
 #include "stdio.h"
-#include "conio.h"
 #include "iostream"
 
 using namespace std;
 
-
+#define INT_MAX 0x7fffffff
 int n1,m1,n;
 int capacity[1001][1001], flow[1001][1001], color[1001], pred[1001], head, tail, numbers[1002];
 
@@ -73,7 +72,7 @@ int max_flow(int start, int stock)
 int main()
 {
 
-  freopen ("test6.in", "r", stdin); // берём число вершин и матрицу смежности из файла
+  freopen ("test6.in", "r", stdin);
   cin >> n1;
   cin >> m1;
   cout << "Count of V = " << n1+m1 << endl;

@@ -1,5 +1,5 @@
 ﻿#include <iostream>
-#include "../max_flow/maxflow.hpp"
+#include "../max_flow/max_flow.hpp"
 
 using namespace std;
 
